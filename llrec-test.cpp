@@ -81,14 +81,34 @@ int main(int argc, char* argv[])
     // -----------------------------------------------
     // Feel free to update any code below this point
     // -----------------------------------------------
-    Node* head = readList(argv[1]);
-    cout << "Original list: ";
-    print(head);
+    // Node* head = readList(argv[1]);
+    // Node* list = nullptr;
+	// Node* small = (Node*) &list; // set to a non-null address
+	// Node* large = (Node*) &list; // set to a non-null address
+	// llpivot(list, small, large, 42);
 
-    // Test out your linked list code
 
+    Node* list = new Node(2, nullptr);
+	Node* small = (Node*) &list; // set to a non-null address
+	Node* large = (Node*) &list; // set to a non-null address
+	llpivot(list, small, large, 1);
+    
+    // cout << large->val << endl;
+    // if (small == NULL) {
+    //     cout << "NULL" << endl;
+    // }
 
+    while (small != NULL) {
+        Node* temp = small;
+        small = small->next;
+        delete temp;
+    }
 
+    while (large != NULL) {
+        Node* temp = large;
+        large = large->next;
+        delete temp;
+    }
     
     return 0;
 
